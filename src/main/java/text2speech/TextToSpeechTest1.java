@@ -24,11 +24,13 @@ public class TextToSpeechTest1 {
 	
 
 		try {
-		  String text = "Hello world";
-		  InputStream stream = service.synthesize(text, Voice.EN_ALLISON,
-		    AudioFormat.WAV).execute();
+		  String text = "Java is the world's most popular programming language. "
+		  		+ "Java SE 9, our latest release, is the result of an industry-wide development effort involving open review, "
+		  		+ "weekly builds, and extensive collaboration between Oracle engineers and members of the worldwide Java developer "
+		  		+ "community via the OpenJDK Community and the JCP.";
+		  InputStream stream = service.synthesize(text, Voice.EN_ALLISON, AudioFormat.WAV).execute();
 		  InputStream in = WaveUtils.reWriteWaveHeader(stream);
-		  OutputStream out = new FileOutputStream("hello_world.wav");
+		  OutputStream out = new FileOutputStream("hello_java.wav");
 		  byte[] buffer = new byte[1024];
 		  int length;
 		  while ((length = in.read(buffer)) > 0) {

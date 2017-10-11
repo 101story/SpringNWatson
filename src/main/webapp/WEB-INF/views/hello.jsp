@@ -23,17 +23,5 @@
 ${msg}
 <img src="resources/waving.png">
 <br/>
-
-<textarea id="readText" style="width:500px; height:100px"></textarea><br>
-<select name="voiceselect">
-<c:forEach items="${voices}" var="voice">
-	<option value=${voice.description }>${voice.description }</option>
-</c:forEach>
-</select>
-<br/>
-
-<input type="range"  min="0" max="100" width="500"/>
-<button type="button">읽기</button>
-
 </body>
 </html>
