@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 매타정보를 사용해야 ? 문자로 인식할 수 있음 (원래 주소값에 사용됨)  -->
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="<c:url value=""/>" />
 <title>Insert title here</title>
@@ -18,7 +19,7 @@
 			param = decodeURIComponent(param);
 			//alert(param)
 			$.ajax({
-				url : "http://localhost:8088/dev/classifier",
+				url : "classifier",//"http://localhost:8088/dev/classifier",
 				type : "POST",
 				data : param,
 				contentType : "application/json; charset=UTF-8",
