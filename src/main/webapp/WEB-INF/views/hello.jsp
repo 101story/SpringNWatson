@@ -23,5 +23,14 @@
 ${msg}
 <img src="resources/waving.png">
 <br/>
+<table border="1">
+<c:forEach items="${list }" var="vo">
+<tr>
+	<td>${vo.no }</td>
+	<td>${vo.statement }</td>
+	<td>${vo.lang }</td>
+</tr>
+</c:forEach>
+</table>
 </body>
 </html>

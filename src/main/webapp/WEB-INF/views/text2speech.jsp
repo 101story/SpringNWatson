@@ -116,7 +116,7 @@ And she's buying a stairway to heaven
 
 	<div class="row">
 		<div class="col-lg-10 col-sm-10">
-			<select name="voice" class="form-control">
+			<select name="lang" class="form-control">
 				<c:forEach items="${voices}" var="voice">
 					<option value="${voice.name}">${voice.language} : ${voice.description}</option>
 				</c:forEach>

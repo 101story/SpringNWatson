@@ -37,12 +37,16 @@ public class Text2SpeechController {
 	}
 	
 	@RequestMapping("display")
-	public ModelAndView display_voice() {
-		TextToSpeech service = new TextToSpeech();
-		service.setUsernameAndPassword("c307664a-97bb-4e0f-b8af-784116a2b676", "6Sokqkz82ep6");
+	public ModelAndView display_voice() throws Exception {
+		TextToSpeech service2 = new TextToSpeech();
+		service2.setUsernameAndPassword("c307664a-97bb-4e0f-b8af-784116a2b676", "6Sokqkz82ep6");
 		
-		List<Voice> voices = service.getVoices().execute();
-		return new ModelAndView("hello", "voices", voices);
+		List<Text2SpeechVO> list = service.getText2SpeechList();
+		List<Voice> voices = service2.getVoices().execute();
+		ModelAndView mav = new ModelAndView("hello", "voices", voices);
+		mav.addObject("list", list);		
+		return mav ;
+		
 	}
 
 //	@PostMapping("text2speech")
@@ -55,16 +59,15 @@ public class Text2SpeechController {
 	}
 	
 	@GetMapping("speaker")
-	public void speaker(String statement, String voice, HttpServletResponse response) throws Exception {
-		logger.info("statement: "+statement);
-		logger.info("voice: "+voice);
+	public void speaker(Text2SpeechVO vo, HttpServletResponse response) throws Exception {
+		logger.info("vo : "+vo);
 		
 		response.setContentType("application/octet-stream");
 		response.setHeader(
 				"Content-Disposition", "attachment;filename=" +
 				URLEncoder.encode("voice.ogg","UTF-8"));
 		
-		InputStream is = service.getSpeech(statement, voice);
+		InputStream is = service.getSpeech(vo.getStatement(), vo.getLang());
 		OutputStream os = response.getOutputStream();
 		
 /*		byte[] buffer = new byte[1024];
@@ -74,6 +77,8 @@ public class Text2SpeechController {
 		}
 		os.close();
 		is.close();*/
+		
+		service.insertText2Speech(vo);
 		
 		FileCopyUtils.copy(is, os);	
 	}
