@@ -10,5 +10,6 @@ public interface Text2SpeechService {
 	public InputStream getSpeech(String statement, String voice) throws Exception;
 	public void insertText2Speech(Text2SpeechVO vo) throws Exception;
 	public List<Text2SpeechVO> getText2SpeechList() throws Exception;
+	public void deleteText2Speech(int no) throws Exception;
 	
 }

@@ -45,6 +45,13 @@ public class Text2SpeechServiceDAOImpl implements Text2SpeechServiceDAO{
 				+ "lang from tbl_text2speech order by no desc", rowMapper);
 	}
 
+	@Override
+	public int deleteText2Speech(int no) throws Exception {
+		String sql ="delete from tbl_text2speech where no=?"; 
+				
+		return jdbcTemplate.update(sql, no);
+	}
+
 }
 
 

@@ -42,4 +42,11 @@ public class Text2SpeechServiceImpl extends TextToSpeech implements Text2SpeechS
 		// TODO Auto-generated method stub
 		return text2speechDAO.getText2SpeechList();
 	}
+
+	@Override
+	public void deleteText2Speech(int no) throws Exception {
+		if(text2speechDAO.deleteText2Speech(no)==0){
+			throw new RuntimeException("없는 번호 입니다.");
+		}
+	}
 }

@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -82,4 +83,18 @@ public class Text2SpeechController {
 		
 		FileCopyUtils.copy(is, os);	
 	}
+	
+	@RequestMapping("delete/{no}")
+	public void delete(@PathVariable int no) {
+		logger.info("no : "+no);
+		ModelAndView mav = new ModelAndView("result");
+		try {
+			service.deleteText2Speech(no);
+			mav.addObject("msg", no+"번 레코드 삭제 성공");
+			mav.addObject("url", "../display");
+		} catch (Exception e) {
+			mav.addObject("msg", no+"번 레코드 삭제 실패");
+		}
+	}
+	
 }
