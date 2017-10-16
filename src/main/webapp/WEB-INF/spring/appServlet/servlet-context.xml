@@ -3,29 +3,39 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
+	<!-- MVC 활성화 -->
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
 
+	<!-- 자원매핑 -->
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<resources mapping="/resources/**" location="/resources/" />
 
+	<!-- View 의 위치 매핑 -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	<aop:aspectj-autoproxy>
+		
+	</aop:aspectj-autoproxy>
+	
+	<!-- 알아서 bean 생성 component scan-->	
 	<!-- data source -->
 	<context:component-scan base-package="com.jin.dev" />
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<beans:property name="url" value="jdbc:mysql://localhost:3303/oracle"></beans:property>
-		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver"></beans:property>
+		<beans:property name="url" value="jdbc:log4jdbc:mysql://localhost:3303/oracle"></beans:property>
+		<beans:property name="driverClassName" value="net.sf.log4jdbc.DriverSpy"></beans:property>
 		<beans:property name="username" value="oracle"></beans:property>
 		<beans:property name="password" value="oracle"></beans:property>
 	</beans:bean>
@@ -33,4 +43,31 @@
 	<beans:bean id="jdbcTetmplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
 	</beans:bean>
+	
+	<!-- ibatis -->
+	<beans:bean id="sqlMapClientFactory" 
+	class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<beans:property name="dataSource" ref="dataSource" />
+		<beans:property name="configLocation" value="/WEB-INF/SqlMapConfig.xml" />
+	</beans:bean>
+	
+	<beans:bean id="sqlMapClientTemplate"
+	class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<beans:property name="sqlMapClient" ref="sqlMapClientFactory" />
+	</beans:bean>
+	
+	<!-- mybatis -->
+	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"></beans:property>
+		<!-- package를 미리 잡아서 class 명으로 바로 접근가능하도록 함  -->
+		<beans:property name="typeAliasesPackage" value="com.jin.dev.controller"></beans:property>
+	</beans:bean>
+	
+	<beans:bean id="text2SpeechDAOMybatis" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<beans:property name="sqlSessionFactory" ref="sqlSessionFactory"></beans:property>
+		<beans:property name="mapperInterface" value="com.jin.dev.controller.Text2SpeechServiceDAO"></beans:property>	
+	</beans:bean>
+	<!-- mybatis end -->
+	
+	
 </beans:beans>

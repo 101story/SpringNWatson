@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="tts">
+	<typeAlias alias="ttsVO" type="com.jin.dev.controller.Text2SpeechVO"/>
+
+	<select id="getText2SpeechList" resultClass="ttsVO">
+	select no, statement, lang from tbl_text2speech
+	order by no desc
+	</select>
+	
+	<insert id="insertText2Speech" parameterClass="ttsVO">
+	insert into tbl_text2speech(statement,lang)values(#statement#,#lang#)
+	</insert>
+	
+	<delete id="deleteText2Speech" parameterClass="int">
+	delete from tbl_text2speech
+	where  no = #no#
+	</delete>
+</sqlMap>

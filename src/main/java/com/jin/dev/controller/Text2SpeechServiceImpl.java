@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.ibm.watson.developer_cloud.text_to_speech.v1.TextToSpeech;
@@ -15,6 +16,8 @@ import com.ibm.watson.developer_cloud.text_to_speech.v1.model.Voice;
 public class Text2SpeechServiceImpl extends TextToSpeech implements Text2SpeechService{
 
 	@Autowired
+	//@Qualifier("ibatis")
+	@Qualifier("text2SpeechDAOMybatis")
 	private Text2SpeechServiceDAO text2speechDAO;
 	
 	public Text2SpeechServiceImpl() {

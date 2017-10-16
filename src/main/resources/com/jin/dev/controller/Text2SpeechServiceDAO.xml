@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper      
+    PUBLIC "-//mybatis.apache.org//DTD Mapper 3.0//EN"      
+    "http://mybatis.apache.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jin.dev.controller.Text2SpeechServiceDAO">
+	<select id="getText2SpeechList" resultType="Text2SpeechVO">
+	select no, statement, lang from tbl_text2speech
+	order by no desc
+	</select>
+	
+	<insert id="insertText2Speech" parameterType="Text2SpeechVO">
+	insert into tbl_text2speech(statement,lang)values(#{statement},#{lang})
+	</insert>
+	
+	<delete id="deleteText2Speech" parameterType="int">
+	delete from tbl_text2speech
+	where  no = #{no}
+	</delete>
+</mapper>
