@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+var com = parseInt(Math.random() * 100) + 1;
+var count = 0;
+var you = 0;
+
+function hit_number() {
+	you = document.getElementById('you').value;
+	count++;
+	if (com < you) {
+		alert('Down~!');
+	} else if (com > you) {
+		alert('Up~!');
+	} else {
+		alert('축하합니다~!!! ' + count + '번 만에 맞추셨습니다!!');
+	}
+}
+</script>
+
+</head>
+<body>
+<input type="number" value="50" id="you" 
+max="100" min="1" />
+<button type="button" onclick="hit_number()">확인</button>
+</body>
+</html>

@@ -1,0 +1,12 @@
+GET /webdev/AdditionalServlet?name=jung HTTP/1.1
+Host: localhost:80
+
+--------
+
+POST /webdev/AdditionalServlet01 HTTP/1.1
+Host: 70.12.50.50:8088
+Content-type: application/x-www-form-urlencoded
+User-agent: Mozilla/5.0
+Content-Length: 9 
+
+name=jung

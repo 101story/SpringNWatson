@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function shift_right() {
+	document.myform.ta2.value =document.myform.ta1.value;
+	document.myform.ta1.value ='';
+}
+
+function shift_left() {
+	document.myform.ta1.value =document.myform.ta2.value;
+	document.myform.ta2.value ='';
+}
+</script>
+</head>
+<body>
+<form name="myform">
+<table>
+<tr>
+	<td><textarea name="ta1" rows="5" cols="20">실수란 신을 용서하는 인간의 행위이다</textarea></td>
+	<td>
+		<button type="button" onclick="shift_right()">→</button><br/>
+		<button type="button" onclick="shift_left()">←</button><br/>
+	</td>
+	<td><textarea name="ta2" rows="5" cols="20"></textarea></td>
+</tr>
+</table>
+</form>
+</body>
+</html>

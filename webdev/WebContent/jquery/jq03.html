@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('#btnRight').click(function(){
+		if ($('#ta1').val() !=='') {
+			$('#ta2').val(
+				$('#ta1').val()
+			);
+			$('#ta1').val('')
+		}
+	});
+	
+	$('#btnLeft').click(function(){
+		if ($('#ta2').val() !=='') {
+			$('#ta1').val(
+				$('#ta2').val()
+			);
+			$('#ta2').val('')
+		}
+	});
+});
+</script>
+</head>
+<body>
+<table>
+<tr>
+	<td><textarea id="ta1" rows="5" cols="20">실수란 신을 용서하는 인간의 행위이다</textarea></td>
+	<td>
+		<button id="btnRight">→</button><br/>
+		<button id="btnLeft">←</button><br/>
+	</td>
+	<td><textarea id="ta2" rows="5" cols="20"></textarea></td>
+</tr>
+</table>
+</body>
+</html>

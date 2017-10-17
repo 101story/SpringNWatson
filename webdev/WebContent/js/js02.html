@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+function shift_right() {
+	let str = document.getElementById('ta1').value;
+
+	if (str!=='') {
+		document.getElementById('ta2').value = str;
+		document.getElementById('ta1').value = '';
+	}
+}
+
+function shift_left() {
+	let str = document.getElementById('ta2').value;
+
+	if (str!=='') {
+		document.getElementById('ta1').value = str;
+		document.getElementById('ta2').value = '';
+	}
+}
+</script>
+</head>
+<body>
+<form name="myform">
+<table>
+<tr>
+	<td><textarea id="ta1" rows="5" cols="20">실수란 신을 용서하는 인간의 행위이다</textarea></td>
+	<td>
+		<button onclick="shift_right()">→</button><br/>
+		<button onclick="shift_left()">←</button><br/>
+	</td>
+	<td><textarea id="ta2" rows="5" cols="20"></textarea></td>
+</tr>
+</table>
+</form>
+</body>
+</html>
