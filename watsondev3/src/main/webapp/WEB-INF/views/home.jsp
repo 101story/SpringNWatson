@@ -6,9 +6,12 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	watson examples...
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
+<ol>
+	<li><a href="nluForm">Natural Language Understanding</a></li>
+
+</ol>
 </body>
 </html>
