@@ -1,15 +1,19 @@
 package com.jin.visual;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.ibm.watson.developer_cloud.visual_recognition.v3.VisualRecognition;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.ClassifyImagesOptions;
 import com.ibm.watson.developer_cloud.visual_recognition.v3.model.VisualClassification;
 
 public class VisualRecognitionTest {
-
+	@Value("${visual.apikey}")
+	private static String apikey;
+	
 	public static void main(String[] args) {
 		String SINGLE_IMAGE_FILE = "img/impoint_red.png";
 		VisualRecognition service = new VisualRecognition(VisualRecognition.VERSION_DATE_2016_05_20);
-		service.setApiKey("7e1f9a99c503f3744f9ba66638a7b9a2b5ec5067");
+		service.setApiKey(apikey);
 
 		System.out.println("Classify an image");
 		ClassifyImagesOptions options = new ClassifyImagesOptions.Builder()

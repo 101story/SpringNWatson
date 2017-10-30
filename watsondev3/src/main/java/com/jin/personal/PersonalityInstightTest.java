@@ -1,14 +1,20 @@
 package com.jin.personal;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.ibm.watson.developer_cloud.personality_insights.v3.PersonalityInsights;
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.Profile;
 import com.ibm.watson.developer_cloud.personality_insights.v3.model.ProfileOptions;
 
 public class PersonalityInstightTest {
-
+	@Value("${personal.username}")
+	private static String username;
+	@Value("${personal.password}")
+	private static String password;
+	
 	public static void main(String[] args) {
 		PersonalityInsights service = new PersonalityInsights(PersonalityInsights.VERSION_DATE_2016_10_19);
-		service.setUsernameAndPassword("50afd504-7986-4a73-bc0f-732d56bc93f5", "bwdxBnOBfOZ3");
+		service.setUsernameAndPassword(username, password);
 		
 		String text = "Call me Ishmael. Some years ago-never mind how long precisely-having "
 			    + "little or no money in my purse, and nothing particular to interest me on shore, "

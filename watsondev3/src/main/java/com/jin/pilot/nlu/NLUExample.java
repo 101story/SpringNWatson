@@ -1,5 +1,7 @@
 package com.jin.pilot.nlu;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.NaturalLanguageUnderstanding;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalysisResults;
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.AnalyzeOptions;
@@ -7,8 +9,10 @@ import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.Co
 import com.ibm.watson.developer_cloud.natural_language_understanding.v1.model.Features;
 
 class NLUExample {
-	private static String username = "bfd4c860-5d5a-4cf3-a7a6-e57f9b549401";
-	private static String password = "AizNeJLkOMIm";
+	@Value("${nlu.username}")
+	private static String username;
+	@Value("${nlu.username}")
+	private static String password;
 
 	private static String text = "전문가들은 최근 코스피가 많이 올랐기 때문에 쉬어가는 것이라고 해석했다. 또 3분기 실적에 대한 관망세, 업종별 온기 확산, 각종 외부 이벤트 등이 복합적으로 작용하며 상승폭이 크지 않고 있다고 분석했다.\r\n" + 
 			"단기간 지수가 많이 올랐기 때문에 숨고르기하는 시간이 필요한 것”이라고 말했다." + 
