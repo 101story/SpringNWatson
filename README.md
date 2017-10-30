@@ -2,13 +2,20 @@
 # Watson API with Spring
 
 ## WebDEV
+* VO/DAO
+* Cookie
+* Filter
+* Servlet
+* Action
+* Download
+* Upload
+
 
 ## jUnitTest
 
 ## Watson Spring
 * Text to Speech using Watson API
-* Natural Language Classifier using Watson 
-PI
+* Natural Language Classifier using Watson API
 * Restful API CRUD
 * Jackson library 
 * Spring jdbc W mysql
@@ -16,4 +23,7 @@ PI
 * Log4jdbc Remix
 
 ## Watson DEV3
+* Personality Insight Test
+* Natural Language Understanding
+* Visual Recognition
 
