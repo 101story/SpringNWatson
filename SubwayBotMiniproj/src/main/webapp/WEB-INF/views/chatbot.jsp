@@ -40,7 +40,7 @@ function ajax_process(_isay){
 	$.ajax({
 		type : 'POST',
 		url  : 'watsonsay',
-		data : 'isay=' + _isay,
+		data : 'isay=' + encodeURIComponent(_isay),
 		async: false,
 		success : function(data) {
 			console.log(data);
@@ -48,7 +48,7 @@ function ajax_process(_isay){
 				'<p class="triangle-border left">' + data.output.text;
 				
 			if (_isay ==='') {
-				watsonsay += '<br/><img src="<c:url value="/resources/img/start.jpg"/>" width="300" />';
+				watsonsay += '<br/><img src="<c:url value="/resources/img/menusm.png"/>" width="300" />';
 			}	
 			
 			watsonsay += '</p>';
