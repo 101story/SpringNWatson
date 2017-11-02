@@ -199,6 +199,12 @@
 		    <version>1.1.1</version>
 		</dependency>
 		    
+		<!-- spring boot -->    
+<!-- 	    <dependency>
+	        <groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-starter-web</artifactId>
+    	</dependency> -->
+    
 	</dependencies>
     <build>
         <plugins>
