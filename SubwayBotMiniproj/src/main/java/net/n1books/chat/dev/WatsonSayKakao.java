@@ -1,5 +1,6 @@
 package net.n1books.chat.dev;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
@@ -47,7 +48,7 @@ public class WatsonSayKakao {
 	@RequestMapping(value = "/message", method = RequestMethod.POST, headers = "Accept=application/json;charset=UTF-8", produces = {
 			MediaType.APPLICATION_JSON_UTF8_VALUE })
 	@ResponseBody
-	public String kakaoChatMsg(@RequestBody JSONObject resObj, HttpSession session) {
+	public String kakaoChatMsg(@RequestBody JSONObject resObj, HttpSession session, HttpServletRequest request) {
 		logger.info("message");
 
 		Conversation service = new Conversation(Conversation.VERSION_DATE_2017_05_26);
@@ -85,8 +86,9 @@ public class WatsonSayKakao {
 		}
 		JSONObject jsonObj = (JSONObject) obj;
 		JSONArray arrStack = (JSONArray) jsonObj.get("dialog_stack");
-			
+
 		String img = null;
+		String imgPath = "https://"+request.getServerName() + "/resources/img/";
 		
 		JsonObject jobjRes = new JsonObject();
 		JsonObject jobjText = new JsonObject();
@@ -94,21 +96,21 @@ public class WatsonSayKakao {
 		if (jsonObj != null) {
 			JSONObject jsonNode = (JSONObject) arrStack.get(0);
 			String node = (String) jsonNode.get("dialog_node");
-			logger.info("Node : "+node);
-			if(node.equals("node_9_1508721360692")) {
+			logger.info("Node : " + node);
+			if (node.equals("node_9_1508721360692")) {
 				JsonObject photo = new JsonObject();
-				photo.addProperty("url", "http://cfile23.uf.tistory.com/image/2665D143575D40DD0D6EFA");
+				photo.addProperty("url", imgPath+"menusm.png");
 				photo.addProperty("width", 400);
 				photo.addProperty("height", 350);
 				jobjText.add("photo", photo);
-				logger.info("imgName : "+img);
-			}else if(node.equals("node_3_1508719554698")) {
+				logger.info("imgName : " + img);
+			} else if (node.equals("node_3_1508719554698")) {
 				JsonObject photo = new JsonObject();
-				photo.addProperty("url", "http://postfiles7.naver.net/MjAxNjExMjlfODgg/MDAxNDgwMzc1MTEyMDE3.nMA33n9L1T3Hn8hT4qpF6Ct1SvXgAXw5ZfAOIp9I7k4g.MhuS5KpbH9HVYnwZvSgFZ1vf-aniRumSW6YeSMWvsDwg.JPEG.alizee8/2016-11-29_08%3B17%3B14.jpg?type=w773");
-				photo.addProperty("width", 400);
+				photo.addProperty("url", imgPath+"bread.png");
+				photo.addProperty("width", 450);
 				photo.addProperty("height", 350);
 				jobjText.add("photo", photo);
-				logger.info("imgName : "+img);
+				logger.info("imgName : " + img);
 			}
 		}
 

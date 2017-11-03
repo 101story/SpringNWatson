@@ -60,6 +60,10 @@ function ajax_process(_isay){
 				watsonsay += '<br/><img src="<c:url value="/resources/img/bread.png"/>" width="400"/>';
 			}
 			
+			if(data.source!=null){
+				watsonsay = watsonsay + data.source;
+			}
+			
 			watsonsay += '</p>';
 			$('#said').append(watsonsay);	
 			$('html, body').animate({scrollTop: $(document).height()}, 500);
