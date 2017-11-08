@@ -13,6 +13,7 @@ public class Test {
 		photo.addProperty("width", 350);
 		photo.addProperty("height", 300);
 		jobjText.add("photo", photo);
+		jobjText.addProperty("text", "Hello"+" "+"ddd");
 		System.out.println(jobjText);
 	}
 

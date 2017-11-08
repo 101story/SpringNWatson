@@ -10,10 +10,13 @@
 * Download
 * Upload
 
+## ajaxdev 
+* ajax basic 
 
 ## jUnitTest
+* Test using jUnit
 
-## Watson Spring
+## Watson with Spring
 * Text to Speech using Watson API
 * Natural Language Classifier using Watson API
 * Restful API CRUD
